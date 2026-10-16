@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="th">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf7f3">
+  <meta name="description" content="สามปีของเรา — เรื่องราวเล็ก ๆ ที่อยากเก็บไว้ด้วยกัน">
+  <title>私たちの3年間</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Base ---------- */
+    :root {
+      --ink: #392d2d;
+      --muted: #8d7774;
+      --rose: #c77979;
+      --paper: #fbf7f3;
+      --cream: #f2e7e0;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'IBM Plex Sans Thai', sans-serif;
+    }
+
+    a { color: inherit; }
+
+    section {
+      padding: 100px clamp(22px, 10vw, 145px);
+    }
+
+    /* ---------- Top bar ---------- */
+    .top {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(22px, 7vw, 100px);
+      font: 13px 'DM Sans', 'IBM Plex Sans Thai', sans-serif;
+      letter-spacing: .11em;
+      color: var(--muted);
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--rose);
+      font-size: 17px;
+      text-decoration: none;
+    }
+
+    .top > a:last-child { text-decoration: none; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      min-height: calc(100svh - 72px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 6vw;
+      padding: 50px clamp(22px, 10vw, 145px) 90px;
+      max-width: 1500px;
+      margin: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero:after {
+      content: '♡';
+      position: absolute;
+      font: 300 310px/1 'DM Sans', sans-serif;
+      color: #f5e8e2;
+      right: 5%;
+      top: 2%;
+      z-index: -1;
+    }
+
+    .eyebrow {
+      font: 11px 'DM Sans', 'IBM Plex Sans Thai', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      color: var(--rose);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 94px);
+      line-height: 1.18;
+      font-weight: 500;
+      letter-spacing: -.04em;
+      margin: 0 0 20px;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--rose);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+      max-width: 430px;
+      margin: 0 0 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      background: var(--ink);
+      color: white;
+      padding: 13px 21px;
+      border-radius: 99px;
+      font-size: 13px;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--rose);
+    }
+
+    .cover {
+      height: min(72vh, 640px);
+      min-height: 370px;
+      position: relative;
+    }
+
+    .cover .photo {
+      height: calc(100% - 28px);
+      border-radius: 40% 40% 7px 7px / 28% 28% 7px 7px;
+    }
+
+    .cover-note {
+      position: absolute;
+      right: -20px;
+      bottom: 0;
+      z-index: 2;
+      background: #fffaf6;
+      padding: 15px 20px;
+      box-shadow: 0 12px 35px #4b31241a;
+      font-size: 13px;
+      transform: rotate(3deg);
+    }
+
+    /* ---------- Photo ---------- */
+    .photo {
+      background: #eee1db;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo.empty {
+      display: grid;
+      place-items: center;
+      color: #aa8e85;
+      text-align: center;
+      background: linear-gradient(145deg, #f1e4de, #e6d4cc);
+    }
+
+    .photo.empty:before {
+      content: '♡';
+      position: absolute;
+      font: 100px/1 'DM Sans', sans-serif;
+      color: #f9f1ed;
+    }
+
+    .photo.empty span {
+      z-index: 1;
+      font-size: 12px;
+      letter-spacing: .08em;
+      background: #fbf7f3d9;
+      padding: 7px 12px;
+      border-radius: 30px;
+    }
+
+    .cover .photo img {
+      object-position: center top;
+    }
+
+    /* ---------- Story / memories ---------- */
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin: 0 auto 38px;
+      max-width: 1200px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 500;
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .section-head p {
+      max-width: 360px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .story { background: var(--cream); }
+
+    .memory-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .memory { min-width: 0; }
+
+    .memory .photo {
+      aspect-ratio: 4/5;
+      border-radius: 4px;
+    }
+
+    .memory:nth-child(2) { padding-top: 50px; }
+    .memory:nth-child(3) { padding-top: 100px; }
+
+    .caption {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 15px 2px;
+    }
+
+    .caption strong {
+      min-width: 0;
+      flex: 1;
+      color: var(--ink);
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .caption span {
+      flex-shrink: 0;
+      font: 11px 'DM Sans', sans-serif;
+      color: var(--rose);
+      letter-spacing: .1em;
+    }
+
+    /* ---------- Letter ---------- */
+    .letter {
+      max-width: 840px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .letter .eyebrow { margin-bottom: 20px; }
+
+    .letter h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 500;
+      margin: 0 0 25px;
+    }
+
+    .letter .copy {
+      font-size: 17px;
+      line-height: 2.1;
+      color: #6f5c58;
+      max-width: 650px;
+      margin: auto;
+      white-space: pre-line;
+    }
+
+    .signature {
+      font: 14px 'DM Sans', 'IBM Plex Sans Thai', sans-serif;
+      color: var(--rose);
+      margin-top: 28px;
+    }
+
+    /* ---------- Closing & footer ---------- */
+    .closing {
+      background: #ead8d0;
+      text-align: center;
+      padding: 82px 22px;
+    }
+
+    .closing p {
+      font-size: clamp(24px, 4vw, 43px);
+      line-height: 1.5;
+      font-weight: 400;
+      margin: 0 auto 12px;
+    }
+
+    .closing small {
+      color: #806962;
+      letter-spacing: .12em;
+      font: 11px 'DM Sans', sans-serif;
+    }
+
+    .footer {
+      padding: 25px;
+      text-align: center;
+      font: 11px 'DM Sans', 'IBM Plex Sans Thai', sans-serif;
+      color: #a38e89;
+      letter-spacing: .08em;
+    }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 760px) {
+      .top { height: 60px; }
+
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        padding-top: 60px;
+        padding-bottom: 76px;
+        gap: 30px;
+      }
+
+      .hero:after {
+        font-size: 220px;
+        top: 38%;
+        right: -4%;
+      }
+
+      .hero h1 { font-size: 62px; }
+
+      .cover {
+        height: 440px;
+        min-height: 0;
+        margin: 0 12px 0 0;
+      }
+
+      .cover-note { right: -10px; }
+
+      .section-head { display: block; }
+      .section-head p { margin-top: 13px; }
+
+      .memory-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .memory:nth-child(2),
+      .memory:nth-child(3) { padding-top: 0; }
+
+      .memory:nth-child(3) {
+        grid-column: 1 / -1;
+        width: 70%;
+        margin: 0 auto;
+      }
+
+      .story,
+      section {
+        padding-top: 70px;
+        padding-bottom: 70px;
+      }
+
+      .letter .copy { font-size: 15px; }
+    }
+
+    @media (max-width: 420px) {
+      .hero h1 { font-size: 53px; }
+      .cover { height: 370px; }
+      .memory-grid { gap: 10px; }
+      .caption strong {
+      min-width: 0;
+      flex: 1;
+      color: var(--ink);
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+}
+  </style>
+</head>
+
+<body>
+
+  <header class="top">
+    <a class="brand" href="#home">♡ us</a>
+    <a href="#memories">OUR STORY · 3 YEARS</a>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div>
+        <div class="eyebrow">a little celebration of us</div>
+        <h1>私たちの<span>3年間</span></h1>
+        <p>สามปีที่นี้เค้าไม่ค่อยได้อยู่กับแพมเยอะเลย แต่ก็ยังอยากมีแพมไปเรื่อยๆนะ</p>
+        <a class="button" href="#memories">ย้อนดูความทรงจำ<span>↓</span></a>
+      </div>
+
+      <div class="cover">
+        <div class="photo"><img src="images/firstimage.jpg" alt="คำบรรยายรูป"></div>
+          <div class="cover-note">my favorite person ♡</div>
+      </div>
+    </section>
+
+    <!-- Memories -->
+    <section class="story" id="memories">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">little moments, big love</div>
+          <h2>รูปปปป</h2>
+        </div>
+        <p>Some moments might seem small, but when it comes to us, they are always special.</p>
+      </div>
+
+      <div class="memory-grid">
+        <article class="memory">
+          <div class="photo"><img src="images/graduction.jpg" alt="คำบรรยายรูป"></div>
+          <div class="caption">
+            <strong>ไปงานงานปัจฉิมนิเทศแฟนแหละ</strong>
+            <span>01 / 03</span>
+          </div>
+        </article>
+
+        <article class="memory">
+          <div class="photo"><img src="images/64CEEBDF-D6BF-4028-B648-5C74E0311063.jpg" alt="คำบรรยายรูป"></div>
+          <div class="caption">
+            <strong>แฟนกินเครปน่ารักจัง</strong>
+            <span>02 / 03</span>
+          </div>
+        </article>
+
+        <article class="memory">
+          <div class="photo"><img src="images/EB98C14D-5E43-4501-B297-A23D20F9C07C.jpg" alt="คำบรรยายรูป"></div>
+          <div class="caption">
+            <strong>พาแฟนไปกินติม</strong>
+            <span>03 / 03</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Letter -->
+    <section>
+      <div class="letter">
+        <div class="eyebrow">a note for you</div>
+        <h2>ถึงคนโปรดของฉัน</h2>
+
+        <!-- ข้อความด้านล่างชิดซ้ายโดยตั้งใจ เพราะใช้ white-space: pre-line -->
+        <p class="copy">ขอบคุณที่เข้ามาเป็นส่วนหนึ่งในทุกวันของเค้า
+ขอบคุณสำหรับที่อย่างแพมทำให้เลย เค้าจะอยู่กับแพมไปเรื่อยๆและรักแพมไปตลอดเลยนะ
+
+สามปีที่ผ่านมาเป็นเวลาที่มีความหมายกับเค้ามากๆเลย
+และเค้าอยากสร้างความทรงจำดี ๆ ไปด้วยกันอีกเยอะเลย
+
+รักเธอเสมอนะ ♡</p>
+
+        <div class="signature">with all my love, แพม</div>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="closing">
+      <p>สามปีแล้วนะ<br>แล้วก็จะรักไปเรื่อย ๆ เลย</p>
+      <small>HAPPY 3RD ANNIVERSARY · 10/16</small>
+    </section>
+
+  </main>
+
+  <footer class="footer">MADE WITH LOVE </footer>
+
+</body>
+</html>
+
+
+
+
